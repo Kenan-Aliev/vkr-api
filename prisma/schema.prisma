@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  id         Int         @id @default(autoincrement())
+  phone      String      @unique
+  role       Role        @default(user)
+  password   String?
+  superadmin superadmin?
+  manager    manager?
+  token      token?
+  student    student?
+  teacher    teacher?
+}
+
+model superadmin {
+  id     Int    @id @default(autoincrement())
+  name   String
+  user   user   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId Int    @unique
+}
+
+model manager {
+  id         Int      @id @default(autoincrement())
+  name       String
+  surname    String
+  patronymic String
+  date_birth DateTime
+  user       user     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId     Int      @unique
+}
+
+model student {
+  id         Int      @id @default(autoincrement())
+  full_name  String
+  date_birth DateTime
+  balance    Int      @default(0)
+  blacklist  Boolean  @default(false)
+  comment    String?
+  user       user     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId     Int      @unique
+}
+
+model teacher {
+  id         Int           @id @default(autoincrement())
+  full_name  String
+  inn        String
+  address    String
+  date_birth DateTime
+  staj       String
+  comment    String?
+  is_active  Boolean       @default(false)
+  status     TeacherStatus @default(Working)
+  user       user          @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId     Int           @unique
+}
+
+model token {
+  id     Int    @id @default(autoincrement())
+  token  String
+  user   user   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId Int    @unique
+}
+
+enum Role {
+  superadmin
+  manager
+  student
+  teacher
+  user
+}
+
+enum TeacherStatus {
+  Working
+  Fired
+  Vacation
+}
