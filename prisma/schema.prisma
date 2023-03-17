@@ -14,12 +14,21 @@ model Users {
   id         Int          @id @default(autoincrement())
   phone      String       @unique
   role       Roles        @default(USER)
+  branch     Branches?    @relation(fields: [branchId], references: [id])
+  branchId   Int?
   password   String?
   superadmin Superadmins?
   manager    Managers?
   token      Tokens?
   student    Students?
   teacher    Teachers?
+}
+
+model Branches {
+  id      Int     @id @default(autoincrement())
+  name    String
+  address String
+  Users   Users[]
 }
 
 model Superadmins {
