@@ -1,5 +1,5 @@
 import { LoginRequest } from "../interfaces";
-import { PrismaClient, Role } from "@prisma/client";
+import { PrismaClient, Roles } from "@prisma/client";
 import { ApiError, Token } from "../utils";
 import bcrypt from "bcrypt";
 import tokensServices from "./tokens.services";
@@ -8,7 +8,7 @@ const prisma = new PrismaClient();
 
 class AuthServices {
   async login(data: LoginRequest) {
-    const user = await prisma.user.findFirst({
+    const user = await prisma.users.findFirst({
       where: {
         phone: data.phone,
       },
@@ -27,8 +27,8 @@ class AuthServices {
     return { token };
   }
 
-  async getProfile(userId: number, userRole: Role) {
-    const user = await prisma.user.findFirst({
+  async getProfile(userId: number, userRole: Roles) {
+    const user = await prisma.users.findFirst({
       where: {
         id: userId,
       },
@@ -36,10 +36,10 @@ class AuthServices {
         id: true,
         phone: true,
         role: true,
-        manager: userRole === "manager",
-        student: userRole === "student",
-        superadmin: userRole === "superadmin",
-        teacher: userRole === "teacher",
+        manager: userRole === "MANAGER",
+        student: userRole === "STUDENT",
+        superadmin: userRole === "SUPERADMIN",
+        teacher: userRole === "TEACHER",
       },
     });
     return user;

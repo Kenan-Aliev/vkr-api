@@ -1,10 +1,10 @@
-import { Role } from "@prisma/client";
+import { Roles } from "@prisma/client";
 import jwt from "jsonwebtoken";
 import { JwtPayload } from "../interfaces";
 import { ApiError } from "./ApiError";
 
 export class Token {
-  static encrypt(id: number, role: Role) {
+  static encrypt(id: number, role: Roles) {
     return jwt.sign({ id, role }, process.env.JWT_SECRET ?? "secretKey");
   }
   static verify(token: string) {

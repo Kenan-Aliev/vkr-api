@@ -1,18 +1,18 @@
 import { CreateSuperadmin } from "../interfaces";
-import { PrismaClient, Role } from "@prisma/client";
+import { PrismaClient, Roles } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 class SuperadminServices {
   async create(data: CreateSuperadmin) {
-    const newUser = await prisma.user.create({
+    const newUser = await prisma.users.create({
       data: {
         phone: data.phone,
         password: data.password,
-        role: Role.superadmin,
+        role: Roles.SUPERADMIN,
       },
     });
-    await prisma.superadmin.create({
+    await prisma.superadmins.create({
       data: {
         name: data.name,
         userId: newUser.id,

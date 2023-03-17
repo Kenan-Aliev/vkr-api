@@ -1,4 +1,4 @@
-import { Role } from "@prisma/client";
+import { Roles } from "@prisma/client";
 import { Request } from "express";
 
 export interface LoginRequest {
@@ -8,7 +8,7 @@ export interface LoginRequest {
 
 export interface JwtPayload {
   id: number;
-  role: Role;
+  role: Roles;
 }
 
 export interface AuthorizedRequest extends Request {

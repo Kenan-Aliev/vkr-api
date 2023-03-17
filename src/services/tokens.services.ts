@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 class TokensServices {
   async findToken(token: string) {
-    const response = await prisma.token.findFirst({
+    const response = await prisma.tokens.findFirst({
       where: {
         token,
       },
@@ -13,7 +13,7 @@ class TokensServices {
   }
 
   async create(userID: number, token: string) {
-    await prisma.token.create({
+    await prisma.tokens.create({
       data: {
         token,
         userId: userID,
@@ -22,7 +22,7 @@ class TokensServices {
   }
 
   async delete(userID: number) {
-    const deleted = await prisma.token.delete({
+    const deleted = await prisma.tokens.delete({
       where: {
         userId: userID,
       },

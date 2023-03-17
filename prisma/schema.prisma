@@ -10,47 +10,47 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model user {
-  id         Int         @id @default(autoincrement())
-  phone      String      @unique
-  role       Role        @default(user)
+model Users {
+  id         Int          @id @default(autoincrement())
+  phone      String       @unique
+  role       Roles        @default(USER)
   password   String?
-  superadmin superadmin?
-  manager    manager?
-  token      token?
-  student    student?
-  teacher    teacher?
+  superadmin Superadmins?
+  manager    Managers?
+  token      Tokens?
+  student    Students?
+  teacher    Teachers?
 }
 
-model superadmin {
+model Superadmins {
   id     Int    @id @default(autoincrement())
   name   String
-  user   user   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user   Users  @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId Int    @unique
 }
 
-model manager {
+model Managers {
   id         Int      @id @default(autoincrement())
   name       String
   surname    String
   patronymic String
   date_birth DateTime
-  user       user     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user       Users    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId     Int      @unique
 }
 
-model student {
+model Students {
   id         Int      @id @default(autoincrement())
   full_name  String
   date_birth DateTime
   balance    Int      @default(0)
   blacklist  Boolean  @default(false)
   comment    String?
-  user       user     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user       Users    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId     Int      @unique
 }
 
-model teacher {
+model Teachers {
   id         Int           @id @default(autoincrement())
   full_name  String
   inn        String
@@ -60,23 +60,23 @@ model teacher {
   comment    String?
   is_active  Boolean       @default(false)
   status     TeacherStatus @default(Working)
-  user       user          @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user       Users         @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId     Int           @unique
 }
 
-model token {
+model Tokens {
   id     Int    @id @default(autoincrement())
   token  String
-  user   user   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user   Users  @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId Int    @unique
 }
 
-enum Role {
-  superadmin
-  manager
-  student
-  teacher
-  user
+enum Roles {
+  SUPERADMIN
+  MANAGER
+  STUDENT
+  TEACHER
+  USER
 }
 
 enum TeacherStatus {
