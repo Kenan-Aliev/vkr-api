@@ -73,6 +73,11 @@ model Teachers {
   userId     Int           @unique
 }
 
+model Subjects {
+  id   Int    @id @default(autoincrement())
+  name String
+}
+
 model Tokens {
   id     Int    @id @default(autoincrement())
   token  String

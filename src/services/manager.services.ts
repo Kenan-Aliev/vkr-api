@@ -1,4 +1,4 @@
-import { Manager } from "../interfaces";
+import { EditManager, Manager } from "../interfaces";
 import { PrismaClient, Roles } from "@prisma/client";
 import { ApiError } from "../utils";
 import bcrypt from "bcrypt";
@@ -83,6 +83,21 @@ class ManagerServices {
       },
     });
     return manager;
+  }
+
+  async edit(managerId: number, data: EditManager) {
+    const updated = await prisma.managers.updateMany({
+      where: {
+        userId: managerId,
+      },
+      data: {
+        ...data,
+      },
+    });
+     if(updated.count > 0){
+      return {message:"Вы успешно обновили данные менеджера"}
+     }
+  throw ApiError.ClientError("Не удалось обновить данные менеджера")
   }
 }
 

@@ -4,6 +4,7 @@ import {
   managerRouter,
   authRouter,
   branchesRouter,
+  subjectsRouter,
 } from "./routes";
 import { exceptionMiddleware } from "./middlewares";
 
@@ -21,6 +22,7 @@ class App {
     this.app.use("/manager", managerRouter);
     this.app.use("/branch", branchesRouter);
     this.app.use("/auth", authRouter);
+    this.app.use("/subject", subjectsRouter);
     this.app.use(exceptionMiddleware);
     this.app.listen(this.port, () => {
       console.log(`Server started on PORT ${this.port}`);

@@ -7,3 +7,5 @@ export interface Manager {
   branchId: number;
   password: string;
 }
+
+export type EditManager = Omit<Manager, "phone" | "bracnhId" | "password">;
