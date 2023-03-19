@@ -1,4 +1,4 @@
-import { CreateSuperadmin } from "../interfaces";
+import { CreateSuperadmin } from "@/interfaces";
 import { PrismaClient, Roles } from "@prisma/client";
 
 const prisma = new PrismaClient();

@@ -3,6 +3,8 @@ import { editBranchValidators } from "./branch/editBranch.validators";
 import { createManagerValidators } from "./manager/createManager.validators";
 import { editManagerValidators } from "./manager/editManager.validators";
 import { createSubjectValidors } from "./subjects/createSubject.validators";
+import { createTariffValidators } from "./tariff/createTariff.validators";
+import { createAdSourcesValidators } from "./adSources/adSources.validators";
 
 export {
   createBranchValidators,
@@ -10,4 +12,6 @@ export {
   createManagerValidators,
   editManagerValidators,
   createSubjectValidors,
+  createTariffValidators,
+  createAdSourcesValidators,
 };

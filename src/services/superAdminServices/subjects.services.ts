@@ -1,6 +1,6 @@
-import { Subject } from "../interfaces";
+import { Subject } from "@/interfaces";
 import { PrismaClient } from "@prisma/client";
-import { ApiError } from "../utils";
+import { ApiError } from "@/utils";
 
 const prisma = new PrismaClient();
 

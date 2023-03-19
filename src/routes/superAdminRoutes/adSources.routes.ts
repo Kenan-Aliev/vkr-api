@@ -1,46 +1,46 @@
+import { checkAuth, checkRoleMiddleware } from "@/middlewares";
 import { Roles } from "@prisma/client";
 import { Router } from "express";
-import { checkAuth, checkRoleMiddleware } from "../middlewares";
-import { subjectsControllers } from "../controllers";
-import { createSubjectValidors } from "../validators";
+import { adSourcesControllers } from "@/controllers";
+import { createAdSourcesValidators } from "@/validators";
 
 const router = Router();
 
 router.post(
   "/create",
-  createSubjectValidors,
+  createAdSourcesValidators,
   checkAuth,
   checkRoleMiddleware([Roles.SUPERADMIN]),
-  subjectsControllers.create
+  adSourcesControllers.create
 );
 
 router.get(
   "/list",
   checkAuth,
   checkRoleMiddleware([Roles.SUPERADMIN]),
-  subjectsControllers.getList
+  adSourcesControllers.list
 );
 
 router.get(
   "/details/:id",
   checkAuth,
   checkRoleMiddleware([Roles.SUPERADMIN]),
-  subjectsControllers.getById
+  adSourcesControllers.details
 );
 
 router.put(
   "/edit/:id",
-  createSubjectValidors,
+  createAdSourcesValidators,
   checkAuth,
   checkRoleMiddleware([Roles.SUPERADMIN]),
-  subjectsControllers.edit
+  adSourcesControllers.edit
 );
 
 router.delete(
   "/delete/:id",
   checkAuth,
   checkRoleMiddleware([Roles.SUPERADMIN]),
-  subjectsControllers.delete
+  adSourcesControllers.delete
 );
 
 export default router;

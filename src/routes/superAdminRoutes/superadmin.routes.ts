@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { superadminControllers } from "../controllers";
+import { superadminControllers } from "@/controllers";
 
 const router = Router();
 

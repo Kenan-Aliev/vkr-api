@@ -1,6 +1,6 @@
-import { LoginRequest } from "../interfaces";
+import { LoginRequest } from "@/interfaces";
 import { PrismaClient, Roles } from "@prisma/client";
-import { ApiError, Token } from "../utils";
+import { ApiError, Token } from "@/utils";
 import bcrypt from "bcrypt";
 import tokensServices from "./tokens.services";
 

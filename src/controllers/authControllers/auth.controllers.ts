@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { AuthorizedRequest } from "../interfaces";
-import { authServices } from "../services";
+import { AuthorizedRequest } from "@/interfaces";
+import { authServices } from "@/services";
 
 class AuthController {
   async login(req: Request, res: Response, next: NextFunction) {

@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { checkRoleMiddleware, checkAuth } from "../middlewares";
-import { branchesControllers } from "../controllers";
-import { createBranchValidators, editBranchValidators } from "../validators";
+import { checkRoleMiddleware, checkAuth } from "@/middlewares";
+import { branchesControllers } from "@/controllers";
+import { createBranchValidators, editBranchValidators } from "@/validators";
 import { Roles } from "@prisma/client";
 
 const router = Router();

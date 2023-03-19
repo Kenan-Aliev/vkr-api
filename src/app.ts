@@ -1,10 +1,12 @@
 import express, { Express } from "express";
 import {
   superadminRouter,
-  managerRouter,
+  managersRouter,
   authRouter,
   branchesRouter,
   subjectsRouter,
+  tariffsRouter,
+  adSourcesRouter,
 } from "./routes";
 import { exceptionMiddleware } from "./middlewares";
 
@@ -19,10 +21,12 @@ class App {
   init() {
     this.app.use(express.json());
     this.app.use("/superadmin", superadminRouter);
-    this.app.use("/manager", managerRouter);
+    this.app.use("/manager", managersRouter);
     this.app.use("/branch", branchesRouter);
     this.app.use("/auth", authRouter);
     this.app.use("/subject", subjectsRouter);
+    this.app.use("/tariff", tariffsRouter);
+    this.app.use("/adSource", adSourcesRouter);
     this.app.use(exceptionMiddleware);
     this.app.listen(this.port, () => {
       console.log(`Server started on PORT ${this.port}`);

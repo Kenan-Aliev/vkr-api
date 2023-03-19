@@ -78,6 +78,18 @@ model Subjects {
   name String
 }
 
+model Tariffs {
+  id               Int    @id @default(autoincrement())
+  name             String @unique
+  total_price      Int
+  price_for_lesson Int
+}
+
+model AdSources {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+}
+
 model Tokens {
   id     Int    @id @default(autoincrement())
   token  String

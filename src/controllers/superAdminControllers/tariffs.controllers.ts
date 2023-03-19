@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from "express";
 import { validationResult } from "express-validator";
-import { StatusCode } from "../enums";
-import { subjectsServices } from "../services";
-import { ApiError } from "../utils";
+import { ApiError } from "@/utils";
+import { tariffsServices } from "@/services";
+import { StatusCode } from "@/enums";
 
-class SubjectsController {
+class TariffsController {
   async create(req: Request, res: Response, next: NextFunction) {
     try {
       const validationErrors = validationResult(req);
@@ -12,7 +12,7 @@ class SubjectsController {
         throw ApiError.ValidationError(validationErrors.array()[0].msg);
       }
       const data = req.body;
-      const response = await subjectsServices.create(data);
+      const response = await tariffsServices.create(data);
       return res.status(StatusCode.Created).json(response);
     } catch (err) {
       next(err);
@@ -21,18 +21,18 @@ class SubjectsController {
 
   async getList(req: Request, res: Response, next: NextFunction) {
     try {
-      const subjects = await subjectsServices.getList();
-      return res.json(subjects);
+      const response = await tariffsServices.getList();
+      return res.json(response);
     } catch (err) {
       next(err);
     }
   }
 
-  async getById(req: Request, res: Response, next: NextFunction) {
+  async details(req: Request, res: Response, next: NextFunction) {
     try {
-      const { id: subjectId } = req.params;
-      const subject = await subjectsServices.getById(Number(subjectId));
-      return res.json(subject);
+      const { id: tariffId } = req.params;
+      const response = await tariffsServices.details(Number(tariffId));
+      return res.json(response);
     } catch (err) {
       next(err);
     }
@@ -44,9 +44,9 @@ class SubjectsController {
       if (!validationErrors.isEmpty()) {
         throw ApiError.ValidationError(validationErrors.array()[0].msg);
       }
-      const { id: subjectId } = req.params;
       const data = req.body;
-      const response = await subjectsServices.edit(Number(subjectId), data);
+      const { id: tariffId } = req.params;
+      const response = await tariffsServices.edit(Number(tariffId), data);
       return res.json(response);
     } catch (err) {
       next(err);
@@ -55,8 +55,8 @@ class SubjectsController {
 
   async delete(req: Request, res: Response, next: NextFunction) {
     try {
-      const { id: subjectId } = req.params;
-      const response = await subjectsServices.delete(Number(subjectId));
+      const { id: tariffId } = req.params;
+      const response = await tariffsServices.delete(Number(tariffId));
       return res.json(response);
     } catch (err) {
       next(err);
@@ -64,4 +64,4 @@ class SubjectsController {
   }
 }
 
-export default new SubjectsController();
+export default new TariffsController();

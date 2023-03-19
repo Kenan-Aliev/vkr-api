@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { superadminServices } from "../services";
-import { StatusCode } from "../enums";
+import { superadminServices } from "@/services";
+import { StatusCode } from "@/enums";
 
 class SuperadminControllers {
   async create(req: Request, res: Response, next: NextFunction) {

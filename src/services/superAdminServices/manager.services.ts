@@ -1,6 +1,6 @@
-import { EditManager, Manager } from "../interfaces";
+import { EditManager, Manager } from "@/interfaces";
 import { PrismaClient, Roles } from "@prisma/client";
-import { ApiError } from "../utils";
+import { ApiError } from "@/utils";
 import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();

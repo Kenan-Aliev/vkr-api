@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import { validationResult } from "express-validator";
-import { StatusCode } from "../enums";
-import { branchesServices } from "../services";
-import { ApiError } from "../utils";
+import { StatusCode } from "@/enums";
+import { branchesServices } from "@/services";
+import { ApiError } from "@/utils";
 
 class BranchesController {
   async create(req: Request, res: Response, next: NextFunction) {

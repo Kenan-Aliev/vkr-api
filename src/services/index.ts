@@ -1,9 +1,12 @@
-import superadminServices from "./superadmin.services";
-import tokensServices from "./tokens.services";
-import authServices from "./auth.services";
-import managerServices from "./manager.services";
-import branchesServices from "./branches.services";
-import subjectsServices from "./subjects.services";
+import {
+  branchesServices,
+  managerServices,
+  subjectsServices,
+  superadminServices,
+  tariffsServices,
+  adSourcesServices,
+} from "./superAdminServices";
+import { authServices, tokensServices } from "./authServices/";
 
 export {
   superadminServices,
@@ -12,4 +15,6 @@ export {
   managerServices,
   branchesServices,
   subjectsServices,
+  tariffsServices,
+  adSourcesServices,
 };

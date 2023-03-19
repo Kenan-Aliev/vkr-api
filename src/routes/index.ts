@@ -1,13 +1,19 @@
-import superadminRouter from "./superadmin.routes";
-import managerRouter from "./manager.routes";
-import authRouter from "./auth.routes";
-import branchesRouter from "./branches.routes";
-import subjectsRouter from "./subjects.routes";
+import {
+  branchesRouter,
+  managersRouter,
+  subjectsRouter,
+  superadminRouter,
+  tariffsRouter,
+  adSourcesRouter
+} from "./superAdminRoutes";
+import { authRouter } from "./authRouter";
 
 export {
   superadminRouter,
-  managerRouter,
+  managersRouter,
   authRouter,
   branchesRouter,
   subjectsRouter,
+  tariffsRouter,
+  adSourcesRouter
 };

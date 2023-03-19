@@ -1,8 +1,12 @@
-import superadminControllers from "./superadmin.controllers";
-import managerControllers from "./manager.controllers";
-import authControllers from "./auth.controllers";
-import branchesControllers from "./branches.controllers";
-import subjectsControllers from "./subjects.controllers";
+import {
+  branchesControllers,
+  managerControllers,
+  subjectsControllers,
+  superadminControllers,
+  tariffsControllers,
+  adSourcesControllers,
+} from "./superAdminControllers";
+import { authControllers } from "./authControllers/";
 
 export {
   superadminControllers,
@@ -10,4 +14,6 @@ export {
   authControllers,
   branchesControllers,
   subjectsControllers,
+  tariffsControllers,
+  adSourcesControllers,
 };

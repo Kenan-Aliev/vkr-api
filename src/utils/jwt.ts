@@ -1,6 +1,6 @@
 import { Roles } from "@prisma/client";
 import jwt from "jsonwebtoken";
-import { JwtPayload } from "../interfaces";
+import { JwtPayload } from "@/interfaces";
 import { ApiError } from "./ApiError";
 
 export class Token {

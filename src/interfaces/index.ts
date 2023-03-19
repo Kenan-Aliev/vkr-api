@@ -3,6 +3,7 @@ import { AuthorizedRequest, JwtPayload, LoginRequest } from "./auth.interfaces";
 import { Branch } from "./branches.interfaces";
 import { Manager, EditManager } from "./manager.interfaces";
 import { Subject } from "./subjects.interfaces";
+import { Tariff } from './tariffs.interfaces';
 
 export {
   CreateSuperadmin,
@@ -13,4 +14,5 @@ export {
   Manager,
   EditManager,
   Subject,
+  Tariff
 };

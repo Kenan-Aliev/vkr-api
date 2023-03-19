@@ -1,8 +1,8 @@
 import { Roles } from "@prisma/client";
 import { Router } from "express";
-import { managerControllers } from "../controllers";
-import { checkAuth, checkRoleMiddleware } from "../middlewares";
-import { createManagerValidators, editManagerValidators } from "../validators";
+import { managerControllers } from "@/controllers";
+import { checkAuth, checkRoleMiddleware } from "@/middlewares";
+import { createManagerValidators, editManagerValidators } from "@/validators";
 
 const router = Router();
 
