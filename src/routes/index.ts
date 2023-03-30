@@ -4,7 +4,10 @@ import {
   subjectsRouter,
   superadminRouter,
   tariffsRouter,
-  adSourcesRouter
+  adSourcesRouter,
+  weekDaysRouter,
+  timeRouter,
+  booksRouter
 } from "./superAdminRoutes";
 import { authRouter } from "./authRouter";
 
@@ -15,5 +18,8 @@ export {
   branchesRouter,
   subjectsRouter,
   tariffsRouter,
-  adSourcesRouter
+  adSourcesRouter,
+  weekDaysRouter,
+  timeRouter,
+  booksRouter
 };

@@ -5,6 +5,9 @@ import {
   superadminControllers,
   tariffsControllers,
   adSourcesControllers,
+  weekDaysControllers,
+  timeControllers,
+  booksControllers
 } from "./superAdminControllers";
 import { authControllers } from "./authControllers/";
 
@@ -16,4 +19,7 @@ export {
   subjectsControllers,
   tariffsControllers,
   adSourcesControllers,
+  weekDaysControllers,
+  timeControllers,
+  booksControllers
 };

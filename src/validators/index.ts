@@ -5,6 +5,9 @@ import { editManagerValidators } from "./manager/editManager.validators";
 import { createSubjectValidors } from "./subjects/createSubject.validators";
 import { createTariffValidators } from "./tariff/createTariff.validators";
 import { createAdSourcesValidators } from "./adSources/adSources.validators";
+import { createWeekDayValidators } from "./weekDays/createWeekDay.validators";
+import { createTimeValidators } from "./time/createTime.validators";
+import { createBookValidators } from "./books/createBook.validators";
 
 export {
   createBranchValidators,
@@ -14,4 +17,7 @@ export {
   createSubjectValidors,
   createTariffValidators,
   createAdSourcesValidators,
+  createWeekDayValidators,
+  createTimeValidators,
+  createBookValidators,
 };

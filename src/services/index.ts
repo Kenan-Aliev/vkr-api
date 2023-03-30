@@ -5,6 +5,9 @@ import {
   superadminServices,
   tariffsServices,
   adSourcesServices,
+  weekDaysServices,
+  timeServices,
+  booksServices,
 } from "./superAdminServices";
 import { authServices, tokensServices } from "./authServices/";
 
@@ -17,4 +20,7 @@ export {
   subjectsServices,
   tariffsServices,
   adSourcesServices,
+  weekDaysServices,
+  timeServices,
+  booksServices,
 };

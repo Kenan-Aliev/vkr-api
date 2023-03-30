@@ -29,6 +29,7 @@ model Branches {
   name    String
   address String
   Users   Users[]
+  Books   Books[]
 }
 
 model Superadmins {
@@ -74,8 +75,9 @@ model Teachers {
 }
 
 model Subjects {
-  id   Int    @id @default(autoincrement())
-  name String
+  id    Int     @id @default(autoincrement())
+  name  String
+  Books Books[]
 }
 
 model Tariffs {
@@ -88,6 +90,29 @@ model Tariffs {
 model AdSources {
   id   Int    @id @default(autoincrement())
   name String @unique
+}
+
+model WeekDays {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+}
+
+model Time {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+}
+
+model Books {
+  id        Int       @id @default(autoincrement())
+  title     String
+  quantity  Int
+  price     Int
+  subject   Subjects? @relation(fields: [subjectId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  subjectId Int?
+  branch    Branches? @relation(fields: [branchId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  branchId  Int?
+
+  @@unique([title, branchId, subjectId])
 }
 
 model Tokens {
